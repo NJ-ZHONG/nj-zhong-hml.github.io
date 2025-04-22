@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Portfolio</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* 全局樣式 */
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1, h2 {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    /* 導航列 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #D5AA84; /* 奶茶色 */
+      color: #fff;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .hamburger-menu {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger-menu .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 50px;
+      background-color: #333;
+      padding: 10px;
+      list-style: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links.show {
+      display: block;
+      position: absolute;
+      top: 50px;
+      background-color: #C3A072; /* 深奶茶色 */
+      padding: 10px 0;
+      list-style: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    .nav-links.show a {
+      color: #fff; /* 白字，讓文字更清晰可見 */
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+      background-color: #C3A072; /* 同樣的深奶茶色 */
+      border-bottom: 2px solid #8B5E3C; /* 咖啡色的分隔線 */
+    }
+
+    /* 移除最後一個選項的底線 */
+    .nav-links.show a:last-child {
+      border-bottom: none;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 10px 0;
+    }
+
+    /* 色塊樣式 */
+    .hero {
+      background-color: #F7DAD9; /* 粉紅色 */
+      color: #333;
+      padding: 40px 20px;
+    }
+
+    #projects {
+      background-color: #E5E5E5; /* 淺灰色 */
+      padding: 40px 20px;
+    }
+
+    #contact {
+      background-color: #D5E5FF; /* 淺藍色 */
+      padding: 40px 20px;
+    }
+
+    .projects-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .project-card {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .contact-info {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #333;
+      color: #fff;
+    }
+
+    /* 主內容區域，避免被導航遮擋 */
+    .content {
+      padding-top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="hamburger-menu" onclick="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">首頁</a></li>
+        <li><a href="#projects">作品集</a></li>
+        <li><a href="#contact">聯絡方式</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <section id="profile" class="profile-section">
+    <div class="profile-container">
+      <!-- 左邊照片 -->
+      <div class="profile-photo">
+        <img src="https://youth.chtf.org.tw/sites/default/files/styles/square_150/public/member/c3fc2ce0-102e-4cbb-88a3-bf239e66955f_0.jpg?itok=3uOUs1xV" alt="我的照片" style="width: 200px; height: auto; border-radius: 10px;">
+      </div>
+      <!-- 右邊內容 -->
+      <div class="profile-details">
+        <h2>鍾念潔</h2>
+        <p><strong>學歷：</strong>國立台灣科技大學 企業管理系 大三</p>
+        <p><strong>座右銘：</strong>“走得多慢都無所謂，只要你不停下腳步。”</p>
+        <p><strong>專長：</strong>行銷策略、資料分析、簡報製作</p>
+      </div>
+    </div>
+  </section>
+  <style>
+    /* Profile Section */
+    .profile-section {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #F7DAD9; /* 粉紅背景 */
+      padding: 40px 20px;
+    }
+
+    .profile-container {
+      display: flex;
+      gap: 20px; /* 左右間距 */
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .profile-photo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .profile-photo img {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%; /* 圓形照片 */
+      object-fit: cover;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-details {
+      flex: 2;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* 向上對齊 */
+      gap: 10px;
+      text-align: left; /* 確保文字靠左 */
+      padding-left: 10px; /* 與照片有適當距離 */
+    }
+
+    .profile-details h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .profile-details p {
+      margin: 5px 0;
+      line-height: 1.5;
+    }
+  </style>
+  
+  <div class="content">
+    <section id="home" class="hero">
+      <h1>歡迎來到我的作品集 😊</h1>
+      <p>您好，我是鍾念潔，目前就讀於國立台灣科技大學企業管理系。從高中起，我便就讀國際貿易科，接觸過貿易流程、國際行銷及商業概論等基礎課程，也為我後續在大學的商業學習打下良好基礎。</p>
+      <p>在大學課餘時間，我曾擔任行銷工讀生與暑期工讀生，協助整理與分析行銷數據，並參與撰寫社群內容，累積了資料處理、簡報製作與溝通表達的實務經驗。在校期間，也曾進行市場調查與SWOT分析相關的小論文。</p>
+      <p>我樂於學習、具備責任感，對行銷策略充滿興趣，期待能透過此次實習深入了解國際行銷的實務運作，將我累積的經驗與熱忱實際應用於團隊之中。</p>
+    </section>
+
+    <section id="projects">
+      <h2>作品集 🖼️</h2>
+      <div class="projects-container">
+        <!-- 第一個作品 -->
+        <div class="project-item">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSJYRUOFaiia_Y7kOJtKd1u260bGM8U7Otkw&s" alt="蹲點‧台灣">
+          <div class="project-details">
+            <a href="project1.html">蹲點‧台灣</a>
+            <p>(2024暑假)</p>
+          </div>
+        </div>
+        <!-- 第二個作品 -->
+        <div class="project-item">
+          <img src="https://cachedimages.podchaser.com/256x256/aHR0cHM6Ly9kM213dzFnMXBmcTJwdC5jbG91ZGZyb250Lm5ldC9BdmF0YXIvY2t3b2hncHljMDdvajA5OTh2ZW5teWJ2aS8xNjc2MDIwNTAxMTM3LmpwZw%3D%3D/aHR0cHM6Ly93d3cucG9kY2hhc2VyLmNvbS9pbWFnZXMvbWlzc2luZy1pbWFnZS5wbmc%3D" alt="好食課股份有限公司">
+          <div class="project-details">
+            <a href="project2.html">好食課股份有限公司</a>
+            <p>2024/10~2024/12</p>
+          </div>
+        </div>
+        <!-- 第三個作品 -->
+        <div class="project-item">
+          <img src="https://is5-ssl.mzstatic.com/image/thumb/Purple30/v4/f6/df/7b/f6df7bd9-2ce2-5387-2453-297ca822347d/source/256x256bb.jpg" alt="新竹縣文化局 文化資產科">
+          <div class="project-details">
+            <a href="project3.html">新竹縣文化局 文化資產科</a>
+            <p>2023/7~2023/8</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      .projects-container {
+        display: flex;
+        flex-direction: row; /* 改成橫向排列 */
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .project-item {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        transition: transform 0.3s ease;
+        width: 300px;
+      }
+
+      .project-item:hover {
+        transform: scale(1.05);
+      }
+
+      .project-item img {
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        object-fit: cover;
+      }
+
+      .project-details {
+        flex: 1;
+      }
+
+      .project-details a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #8B5E3C;
+        font-size: 18px;
+      }
+    </style>
+
+    <section id="contact">
+      <h2>聯絡方式 📞</h2>
+      <div class="contact-info">
+        <p><a href="mailto:make5855012922@gmail.com"><i class="fas fa-envelope"></i> Email: make5855012922@gmail.com</a></p>
+        <p><a href="#"><i class="fas fa-phone"></i> 手機: 0903017956</a></p>
+        
+  
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
